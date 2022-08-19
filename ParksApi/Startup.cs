@@ -79,6 +79,7 @@ namespace ParksApi
                 app.UseSwaggerUI(c => 
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "ParksApi v1");
+                    // c.SwaggerEndpoint("/swagger/v2/swagger/.json", "ParksApi v2");
                     c.RoutePrefix = string.Empty;
                 });
                 

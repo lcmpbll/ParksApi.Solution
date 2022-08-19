@@ -61,6 +61,14 @@ _This API lists the qualities of the animals found in Parks Api. The returned li
 <li> Insert the following code** : <br>
 
 <pre>{
+   "Logging": {
+    "LogLevel": {
+      "Default": "Warning",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  },
+  "AllowedHosts": "*",
   "ConnectionStrings": {
     "DefaultConnection": "Server=localhost;Port=3306;database=park_api;uid=root;pwd=[YOUR-PASSWORD-HERE];"
   }

@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using ParksApi.Models;
 
-namespace ParksApi.Controllers.v1
+namespace ParksApi.Controllers.v2
 {
-  [ApiVersion("1.0")]
-  [Route("api/v1/[controller]")]
+  [ApiVersion("2.0")]
+  [Route("api/v2/[controller]")]
   [ApiController]
   public class ParksController : ControllerBase
   {
@@ -21,13 +21,11 @@ namespace ParksApi.Controllers.v1
     {
       _db = db;
     }
-    
     [HttpGet("Version")]
     public IActionResult GetVersion()
     {
-      return new OkObjectResult("v1 controller");
+      return new OkObjectResult("v2 controller");
     }
-    
     [HttpGet("All")]
     public async Task<ActionResult<IEnumerable<Park>>> Get()
     {
@@ -45,6 +43,19 @@ namespace ParksApi.Controllers.v1
       }
       
       return park;
+    }
+    
+    [HttpGet("Filtered")]
+    public async Task<List<Park>> Get(string name, bool dogsAllowed, string parkMgmt, string location, string description)
+    {
+      IQueryable<Park> query = _db.Parks.AsQueryable();
+      
+      if(name != null)
+      {
+        query = query.Where(entry => entry.Name.Contains(name));
+      }
+      return await query.ToListAsync();
+       
     }
     
     [HttpPost]
@@ -107,5 +118,6 @@ namespace ParksApi.Controllers.v1
     {
       return _db.Parks.Any(e => e.ParkId == id);
     } 
-  }    
+    
+  }
 }

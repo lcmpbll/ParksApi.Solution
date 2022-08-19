@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
+using System.IO;
 using ParksApi.Models;
 
 namespace ParksApi
@@ -32,10 +34,29 @@ namespace ParksApi
             opt.UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
          
             services.AddControllers();
-            // services.AddSwaggerGen(c =>
-            // {
-            //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "ParksApi", Version = "v1" });
-            // });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                 { 
+                    Title = "ParksApi", 
+                    Version = "v1",
+                    Description = "An AspNetCore Web Api for information about parks.",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Liam Campbell",
+                        Url = new Uri("https://github.com/lcmpbll")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Mit License",
+                        Url = new Uri("https://github.com/lcmpbll/ParksApi.Solution/blob/main/LICENSE")
+                    } 
+                });
+                var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName));
+            });
+            
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,8 +65,13 @@ namespace ParksApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                // app.UseSwagger();
-                // app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ParksApi v1"));
+                app.UseSwagger();
+                app.UseSwaggerUI(c => 
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ParksApi v1");
+                    c.RoutePrefix = string.Empty;
+                });
+                
             }
 
             // app.UseHttpsRedirection();
@@ -58,6 +84,8 @@ namespace ParksApi
             {
                 endpoints.MapControllers();
             });
+            
+           
         }
     }
 }

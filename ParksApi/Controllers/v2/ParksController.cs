@@ -50,9 +50,25 @@ namespace ParksApi.Controllers.v2
     {
       IQueryable<Park> query = _db.Parks.AsQueryable();
       
-      if(name != null)
+      if (name != null)
       {
         query = query.Where(entry => entry.Name.Contains(name));
+      }
+      if (dogsAllowed != true)
+      {
+        query = query.Where(entry => entry.DogsAllowed == dogsAllowed);
+      }
+      if (parkMgmt != null)
+      {
+        query = query.Where(entry => entry.ParkMgmt == parkMgmt);
+      }
+      if (location != null)
+      {
+        query = query.Where(entry => entry.Location.Contains(location));
+      }
+      if (description != null)
+      {
+        query = query.Where(entry => entry.Description.Contains(description));
       }
       return await query.ToListAsync();
        

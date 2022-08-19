@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,13 +13,13 @@ namespace ParksApi.Controllers
   {
     private readonly ParksApiContext _db;
     
-    public ParksApiController(ParksApiContet db)
+    public ParksController(ParksApiContext db)
     {
       _db = db;
     }
     
     [HttpGet("All")]
-    public async Task<ActionResult<IEnumerable<Park>> Get()
+    public async Task<ActionResult<IEnumerable<Park>>> Get()
     {
       return await _db.Parks.ToListAsync();
     }
@@ -46,7 +47,7 @@ namespace ParksApi.Controllers
     }
     
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutPark(int id, Park park)
+    public async Task<IActionResult> Put(int id, Park park)
     {
       if (id != park.ParkId)
       {
@@ -59,7 +60,7 @@ namespace ParksApi.Controllers
       {
         await _db.SaveChangesAsync();
       }
-      catch (DbUpdateConcurrencyExeception)
+      catch (DbUpdateConcurrencyException)
       {
         if (!ParkExists(id))
         {
@@ -67,13 +68,14 @@ namespace ParksApi.Controllers
         }
         else
         {
-          {
-            throw;
-          }
+          
+          throw;
+          
         }
-        
-        return NoContent();
-      }
+      } 
+      
+      return NoContent();
+      
     }
     
     [HttpDelete("{id}")]
@@ -94,10 +96,6 @@ namespace ParksApi.Controllers
     private bool ParkExists(int id)
     {
       return _db.Parks.Any(e => e.ParkId == id);
-    }
-    
-    
-  }
-     
-     
+    } 
+  }    
 }

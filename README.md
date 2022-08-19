@@ -28,9 +28,9 @@
 ---
 ## Description
 _This API lists the qualities of the animals found in Parks Api. The returned list can be curated by:_
-* _Gender_
 * _Name_
-* _Species_
+* _Location_
+* _Dogs allowed_
 * _Age_
 
 

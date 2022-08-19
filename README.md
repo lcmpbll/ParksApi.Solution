@@ -27,11 +27,12 @@
 
 ---
 ## Description
-_This API lists the qualities of the animals found in Parks Api. The returned list can be curated by:_
-* _Name_
-* _Location_
-* _Dogs allowed_
-* _Age_
+_This API is made up of a list of parks found in Oregon. The returned list can be curated by:_
+* _Name - name of the park_
+* _Location - Which part of Oregon the park is in_
+* _Dogs allowed - are dogs allowed in all areas of the park_
+* _ParkMgmt - Is the park a national or state park_
+*_Description - A short description of the park_
 
 
 
@@ -100,7 +101,7 @@ This program was built using *`Microsoft .NET SDK 5.0.401`*, and may not be comp
 
 ## Known Bugs
 
-* Any known bugs
+* _Version 2 is currently unsupported>_
 
 ## License
 

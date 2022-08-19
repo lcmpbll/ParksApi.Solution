@@ -47,7 +47,7 @@ namespace ParksApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
-                 { 
+                { 
                     Title = "ParksApi", 
                     Version = "v1",
                     Description = "An AspNetCore Web Api for information about parks.",
@@ -75,14 +75,7 @@ namespace ParksApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => 
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ParksApi v1");
-                    // c.SwaggerEndpoint("/swagger/v2/swagger/.json", "ParksApi v2");
-                    c.RoutePrefix = string.Empty;
-                });
-                
+               
             }
 
             // app.UseHttpsRedirection();
@@ -96,6 +89,15 @@ namespace ParksApi
                 endpoints.MapControllers();
             });
             
+             app.UseSwagger();
+             app.UseSwaggerUI(c => 
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                    c.SwaggerEndpoint("/swagger/v2/swagger/.json", "v2");
+                    c.RoutePrefix = string.Empty;
+                    
+                });
+                
            
         }
     }

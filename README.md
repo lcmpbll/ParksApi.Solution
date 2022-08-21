@@ -43,7 +43,7 @@ _This API is made up of a list of parks found in Oregon. The returned list can b
 <details>
 <summary><strong>Initial Setup</strong></summary>
 <ol>
-<li>Copy the git repository url: https://github.com/lcmpbll/Cretaceous22Park
+<li>Copy the git repository url: https://github.com/lcmpbll/CParksApi.Solution
 <li>Open a shell program and navigate to your desktop.
 <li>Clone the repository for this project using the "git clone" command and including the copied URL.
 <li>While still in the shell program, navigate to the root directory of the newly created file named "ParksApi.Solution".
@@ -101,7 +101,7 @@ This program was built using *`Microsoft .NET SDK 5.0.401`*, and may not be comp
 
 ## Known Bugs
 
-* _Version 2 is currently unsupported>_
+* _Version 2 is currently unsupported_
 
 ## License
 

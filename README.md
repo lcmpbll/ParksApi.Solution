@@ -115,4 +115,4 @@ This program was built using *`Microsoft .NET SDK 5.0.401`*, and may not be comp
 
 _Feel free to reach out via [Github](github.com.lcmpbll) to provide feedback on this project or to view my other projects._
 
-[Copyright](/LICENSE) (c) _08-19-2022_ _Liam Campbell_
+[Copyright](/LICENSE) (c) _08-21-2022_ _Liam Campbell_

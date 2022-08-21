@@ -43,7 +43,7 @@ _This API is made up of a list of parks found in Oregon. The returned list can b
 <details>
 <summary><strong>Initial Setup</strong></summary>
 <ol>
-<li>Copy the git repository url: https://github.com/lcmpbll/CParksApi.Solution
+<li>Copy the git repository url: https://github.com/lcmpbll/ParksApi.Solution
 <li>Open a shell program and navigate to your desktop.
 <li>Clone the repository for this project using the "git clone" command and including the copied URL.
 <li>While still in the shell program, navigate to the root directory of the newly created file named "ParksApi.Solution".

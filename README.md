@@ -101,7 +101,8 @@ This program was built using *`Microsoft .NET SDK 5.0.401`*, and may not be comp
 
 ## Known Bugs
 
-* _Version 2 is currently unsupported_
+* _Data for the Valley of the Rogue River does not appear_
+* _Searching descriptions can be tricky. Thoughts on future versions include uploading activities for each site as part of an array._
 
 ## License
 

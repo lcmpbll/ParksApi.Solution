@@ -11,6 +11,7 @@ using ParksApi.Models;
 namespace ParksApi.Controllers.v1
 {
   [ApiVersion("1.0")]
+  [ApiExplorerSettings(GroupName = "v1")]
   [Route("api/v1/[controller]")]
   [ApiController]
   public class ParksController : ControllerBase

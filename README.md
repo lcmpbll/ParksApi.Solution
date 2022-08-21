@@ -34,6 +34,13 @@ _This API is made up of a list of parks found in Oregon. The returned list can b
 * _ParkMgmt - Is the park a national or state park_
 *_Description - A short description of the park_
 
+_Both v1 and v2 are supported at this time. Some end points that can be use are:
+
+* _/api/v1/Parks/all - returns all listed parks_
+* _5001/api/v1/Parks/{id} - returns a park by id_
+* _Put, Post, Delete updates may all be made by id number as well._
+*_v2 supports filtered results._
+*_After following the set up instructions below see swagger documentation for more information._
 
 
 

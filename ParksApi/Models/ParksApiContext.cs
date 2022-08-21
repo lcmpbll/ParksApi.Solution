@@ -15,7 +15,7 @@ namespace ParksApi.Models
     {
       builder.Entity<Park>()
       .HasData(
-        new Park { ParkId = 1, Name = "Valley of the Rogue River", DogsAllowed = true, ParkMgmt = "State Park", Location = "SW Oregon", Description = "Tucked away in the Rogue Valley has some natue and woods to explore. Features swimming, fishing, boating activies" },
+        new Park { ParkId = 1, Name = "Valley of the Rogue River", DogsAllowed = true, ParkMgmt = "State Park", Location = "SW Oregon", Description = "Tucked away in the Rogue Valley has some natue and woods to explore. Features swimming, fishing, boating activities" },
         new Park { ParkId = 2, Name = "Lewis and Clark National Historical Park", DogsAllowed = true, ParkMgmt = "National Park", Location = "NW Oregon", Description = "Has lush rainforest and senic coastal vistas. Features hiking, historical sites,  kayaking, fishing, and wildlife" },
         new Park { ParkId = 3, Name = "John Day Fossil Beds National Monument", DogsAllowed = true, ParkMgmt = "National Park", Location = "East-Central Oregon ", Description = "Rugged rocky terrain, colorful craggy badlands, features a museum, educational film on geology and fossils, hiking " },
         new Park { ParkId = 4, Name = "Oregon Caves National Monument and Preserve", DogsAllowed = true, ParkMgmt = "National Park", Location = "SW Oregon", Description = "Offers tours of cave complexes, Explore underground caverns. Features hunting, hiking, wildlife" },

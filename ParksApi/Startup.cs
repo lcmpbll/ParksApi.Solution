@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.AspNetCore.Mvc.ApiExplorer; 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,7 +49,7 @@ namespace ParksApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 { 
-                    Title = "ParksApi", 
+                    Title = "ParksApi - V1", 
                     Version = "v1",
                     Description = "An AspNetCore Web Api for information about parks.",
                     Contact = new OpenApiContact
@@ -62,6 +63,24 @@ namespace ParksApi
                         Url = new Uri("https://github.com/lcmpbll/ParksApi.Solution/blob/main/LICENSE")
                     } 
                 });
+                c.SwaggerDoc("v2", new OpenApiInfo
+                { 
+                    Title = "ParksApi - V2", 
+                    Version = "v2",
+                    Description = "An AspNetCore Web Api for information about parks.",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Liam Campbell",
+                        Url = new Uri("https://github.com/lcmpbll")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Mit License",
+                        Url = new Uri("https://github.com/lcmpbll/ParksApi.Solution/blob/main/LICENSE")
+                    }
+                });
+                // c.ResolveConflictingActions(apiDescription => api.Descriptions.First());
+                c.DocInclusionPredicate((docName, apiDesc) => apiDesc.GroupName == docName);
                 var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName));
             });
@@ -93,7 +112,7 @@ namespace ParksApi
              app.UseSwaggerUI(c => 
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                    c.SwaggerEndpoint("/swagger/v2/swagger/.json", "v2");
+                    c.SwaggerEndpoint("swagger/v2/swagger.json", "v2");
                     c.RoutePrefix = string.Empty;
                     
                 });

@@ -11,7 +11,8 @@ using ParksApi.Models;
 namespace ParksApi.Controllers.v2
 {
   [ApiVersion("2.0")]
-  [Route("api/v2/[controller]")]
+  [ApiExplorerSettings(GroupName = "v2")]
+  [Route("api/v{version:apiVersion}/[controller]")]
   [ApiController]
   public class ParksController : ControllerBase
   {
@@ -54,9 +55,13 @@ namespace ParksApi.Controllers.v2
       {
         query = query.Where(entry => entry.Name.Contains(name));
       }
-      if (dogsAllowed != true)
+      if (dogsAllowed != false)
       {
-        query = query.Where(entry => entry.DogsAllowed == dogsAllowed);
+        query = query.Where(entry => entry.DogsAllowed == true);
+      }
+      else
+      {
+        query = query.Where(entry => entry.DogsAllowed == false);
       }
       if (parkMgmt != null)
       {
@@ -64,7 +69,7 @@ namespace ParksApi.Controllers.v2
       }
       if (location != null)
       {
-        query = query.Where(entry => entry.Location.Contains(location));
+        query = query.Where(entry => entry.Location == location);
       }
       if (description != null)
       {

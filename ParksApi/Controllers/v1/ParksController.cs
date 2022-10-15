@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using ParksApi.Models;
+// using System.Web.Http;
+
 
 namespace ParksApi.Controllers.v1
 {
+  // [EnableCors(origins:'https://localhost:5001', headers:'*', methods: '*')]
   [ApiVersion("1.0")]
   [ApiExplorerSettings(GroupName = "v1")]
   [Route("api/v1/[controller]")]

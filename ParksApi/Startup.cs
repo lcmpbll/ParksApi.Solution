@@ -16,26 +16,55 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
+// using System.Web.Http;
 using ParksApi.Models;
 
 namespace ParksApi
-{
+{   
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
+        
+        // public static void Register(HttpConfiguration config)
+        // {
+        //     // New code
+        //     config.EnableCors();
+
+        //     config.Routes.MapHttpRoute(
+        //         name: "ParksApi",
+        //         routeTemplate: "api/{controller}/{id}",
+        //         defaults: new { id = RouteParameter.Optional }
+        //     );
+        // }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            services.AddCors();
+                //options =>
+            // {
+            //     options.AddPolicy(name: MyAllowSpecificOrigins,
+            //         policy =>
+            //     {
+            //         policy.WithOrigins("https://localhost:3001",
+            //                     "http://localhost:3000",
+            //                     "https://localhost:5000",
+            //                     "https://localhost:5001");
+            //     });
+            // });
             services.AddDbContext<ParksApiContext>(opt =>
             opt.UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
          
             services.AddControllers();
+            
             services.AddApiVersioning(options => {
                 options.ReportApiVersions = true;
                 options.AssumeDefaultVersionWhenUnspecified = true;
@@ -98,9 +127,14 @@ namespace ParksApi
             }
 
             // app.UseHttpsRedirection();
-
+            
             app.UseRouting();
-
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed((host) => true)//Allow any origin
+                .AllowCredentials()); //AllowCredentials
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

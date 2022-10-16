@@ -15,6 +15,7 @@ namespace ParksApi.Controllers.v1
   // [EnableCors(origins:'https://localhost:5001', headers:'*', methods: '*')]
   [ApiVersion("1.0")]
   [ApiExplorerSettings(GroupName = "v1")]
+  // [Route("/")]
   [Route("api/v1/[controller]")]
   [ApiController]
   public class ParksController : ControllerBase
@@ -26,18 +27,20 @@ namespace ParksApi.Controllers.v1
       _db = db;
     }
     
+    /// Returns the Version of the API Queried.
     [HttpGet("Version")]
     public IActionResult GetVersion()
     {
       return new OkObjectResult("v1 controller");
     }
     
+    /// Returns all Parks.
     [HttpGet("All")]
     public async Task<ActionResult<IEnumerable<Park>>> Get()
     {
       return await _db.Parks.ToListAsync();
     }
-    
+    /// Returns the park with the specified id.
     [HttpGet("{id}")]
     public async Task<ActionResult<Park>> GetPark(int id)
     {
@@ -51,6 +54,7 @@ namespace ParksApi.Controllers.v1
       return park;
     }
     
+    //Add's a park to the Oregon Parks API.
     [HttpPost]
     public async Task<ActionResult<Park>> Post(Park park)
     {

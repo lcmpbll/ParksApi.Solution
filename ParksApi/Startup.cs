@@ -47,7 +47,7 @@ namespace ParksApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            //Adds cors
             services.AddCors();
                 //options =>
             // {
@@ -123,12 +123,14 @@ namespace ParksApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwaggerUI();
                
             }
 
             // app.UseHttpsRedirection();
             
             app.UseRouting();
+            //Configures cors
             app.UseCors(x => x
                 .AllowAnyMethod()
                 .AllowAnyHeader()

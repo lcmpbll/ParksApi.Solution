@@ -15,8 +15,8 @@ namespace ParksApi.Controllers.v1
   // [EnableCors(origins:'https://localhost:5001', headers:'*', methods: '*')]
   [ApiVersion("1.0")]
   [ApiExplorerSettings(GroupName = "v1")]
-  // [Route("/")]
-  [Route("api/v1/[controller]")]
+  [Route("/")]
+  // [Route("api/v1/[controller]")]
   [ApiController]
   public class ParksController : ControllerBase
   {
